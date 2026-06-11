@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, BookOpen, Boxes, CircleHelp, Code2, Compass, Flame, Map as MapIcon, Shield, Skull, Swords, Trophy, Users, Zap } from "lucide-react";
+import { ArrowRight, BookOpen, Boxes, CircleHelp, Code2, Compass, Flame, Map as MapIcon, Shield, Skull, Swords, Trophy, Users, Zap, type LucideIcon } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,7 @@ import en from "@/locales/en.json";
 
 type Home = typeof en.home;
 
-const icons = [BookOpen, Shield, Compass, Boxes, Flame, Code2, Swords, Map, Users, Trophy, Skull, Zap, CircleHelp];
+const icons: LucideIcon[] = [BookOpen, Shield, Compass, Boxes, Flame, Code2, Swords, MapIcon, Users, Trophy, Skull, Zap, CircleHelp];
 
 export default function HomePageClient({ home, locale, articles }: { home: Home; locale: string; articles: ContentItem[] }) {
   const YOUTUBE_VIDEO_ID = "zpvGp5kOg18";
