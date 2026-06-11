@@ -6,7 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { WatchCard, localizeHref } from "@/components/site";
+import { TrailerButton, localizeHref } from "@/components/site";
 import en from "@/locales/en.json";
 
 type Home = typeof en.home;
@@ -14,17 +14,20 @@ type Home = typeof en.home;
 const icons = [BookOpen, Shield, Compass, Boxes, Flame, Code2, Swords, Map, Users, Trophy, Skull, Zap, CircleHelp];
 
 export default function HomePageClient({ home, locale }: { home: Home; locale: string }) {
+  const YOUTUBE_VIDEO_ID = "zpvGp5kOg18";
   return (
     <div className="space-y-16">
-      <section className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-        <div>
-          <p className="mb-3 text-sm font-semibold text-[hsl(var(--nav-theme))]">{home.hero.eyebrow}</p>
-          <h1 className="text-5xl font-extrabold tracking-tight text-foreground sm:text-6xl lg:text-7xl">{home.hero.title}</h1>
-          <p className="mt-5 max-w-2xl text-lg leading-8 text-muted-foreground">{home.hero.description}</p>
-          <div className="mt-6 flex flex-wrap gap-2">{home.hero.stats.map((stat) => <Badge key={stat} variant="secondary" className="border-border bg-muted px-3 py-1 text-muted-foreground">{stat}</Badge>)}</div>
-          <div className="mt-8 flex flex-wrap gap-3"><Button asChild size="lg"><Link href={localizeHref("/beginner-guide", locale)}>{home.hero.primaryCta}</Link></Button><Button asChild size="lg" variant="outline"><Link href={localizeHref("/races/best-race", locale)}>{home.hero.secondaryCta}</Link></Button><Button asChild size="lg" variant="ghost"><Link href={localizeHref("/codes", locale)}>{home.hero.tertiaryCta}</Link></Button></div>
+      <section className="text-center">
+        <div className="mx-auto mb-5 flex items-center justify-center gap-2">
+          <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">{home.hero.title}</h1>
+          <span className="mt-2 inline-flex items-center rounded-md border border-[hsl(var(--nav-theme))] bg-[hsl(var(--nav-theme))] px-2.5 py-0.5 text-xs font-semibold text-primary-foreground sm:-translate-y-1.5">{home.hero.eyebrow}</span>
         </div>
-        <div><p className="mb-3 text-right text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">{home.hero.videoLabel}</p><WatchCard /></div>
+        <div className="mx-auto mt-5 max-w-2xl">
+          <TrailerButton videoId={YOUTUBE_VIDEO_ID} />
+        </div>
+        <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground">{home.hero.description}</p>
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-1.5">{home.hero.stats.map((stat) => <span key={stat} className="inline-flex items-center gap-1 rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium text-muted-foreground">{stat}</span>)}</div>
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-3"><Button asChild size="lg"><Link href={localizeHref("/beginner-guide", locale)}>{home.hero.primaryCta}</Link></Button><Button asChild size="lg" variant="outline"><Link href={localizeHref("/races/best-race", locale)}>{home.hero.secondaryCta}</Link></Button><Button asChild size="lg" variant="ghost"><Link href={localizeHref("/codes", locale)}>{home.hero.tertiaryCta}</Link></Button></div>
       </section>
 
       <section className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
