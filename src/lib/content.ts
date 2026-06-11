@@ -267,7 +267,7 @@ export function getDynamicNavigation(language: Locale = "en"): NavGroup[] {
     if (!entry.isDirectory()) continue;
     const groupSlug = entry.name;
     // 跳过不在 CONTENT_TYPES 中的目录，避免显示会 404 的导航链接
-    if (!CONTENT_TYPES.includes(groupSlug as any)) continue;
+    if (!CONTENT_TYPES.includes(groupSlug as typeof CONTENT_TYPES[number])) continue;
     const groupDir = path.join(localeDir, groupSlug);
     const slugPaths = getSlugsFromDirectory(groupDir);
 
