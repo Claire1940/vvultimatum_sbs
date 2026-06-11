@@ -55,29 +55,39 @@ export function MobileTOC({ headings, label }: { headings: Heading[]; label: str
 }
 
 /**
- * 桌面端侧边栏中的 TOC（始终展开）
+ * 桌面端侧边栏中的 TOC（可折叠）
  * 移动端隐藏
  */
 export function SidebarTOC({ headings, label, currentPathname }: { headings: Heading[]; label: string; currentPathname: string }) {
+  const [open, setOpen] = useState(true);
+
   if (headings.length === 0) return null;
 
   return (
     <div className="hidden lg:block rounded-2xl border border-border bg-card/70 p-5">
-      <h3 className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">{label}</h3>
-      <ul className="space-y-1">
-        {headings.map((h) => (
-          <li key={h.id}>
-            <a
-              href={`#${h.id}`}
-              className={`block rounded-lg px-2 py-1.5 text-sm transition ${
-                h.level === 3 ? "pl-6" : ""
-              } text-muted-foreground hover:bg-muted hover:text-foreground`}
-            >
-              {h.text}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex w-full items-center justify-between"
+      >
+        <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">{label}</h3>
+        <ChevronDown className={`h-4 w-4 text-muted-foreground transition-transform ${open ? "rotate-180" : ""}`} />
+      </button>
+      {open && (
+        <ul className="mt-3 space-y-1 border-t border-border pt-3">
+          {headings.map((h) => (
+            <li key={h.id}>
+              <a
+                href={`#${h.id}`}
+                className={`block rounded-lg px-2 py-1.5 text-sm transition ${
+                  h.level === 3 ? "pl-6" : ""
+                } text-muted-foreground hover:bg-muted hover:text-foreground`}
+              >
+                {h.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
