@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getMessages } from "next-intl/server";
 import { JsonLd, WikiSidebar } from "@/components/site";
+import { getDynamicNavigation } from "@/lib/content";
 import en from "@/locales/en.json";
 import HomePageClient from "./HomePageClient";
 
@@ -22,6 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function LocaleHomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const messages = (await getMessages({ locale })) as Messages;
+  const navGroups = getDynamicNavigation(locale as "en" | "ja");
   const webSite = { "@context": "https://schema.org", "@type": "WebSite", name: "VV Ultimatum Wiki", url: siteUrl, description: messages.home.meta.description };
 
   return (
@@ -29,7 +31,7 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
       <JsonLd data={webSite} />
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_360px]">
         <HomePageClient home={messages.home} locale={locale} />
-        <WikiSidebar locale={locale} />
+        <WikiSidebar locale={locale} navGroups={navGroups} />
       </div>
     </main>
   );

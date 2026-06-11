@@ -2,11 +2,12 @@ import Link from "next/link";
 import { ChevronRight, ExternalLink, Moon, Play, Sun, Menu } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { NAVIGATION_CONFIG } from "@/config/navigation";
-import { getDynamicNavigation } from "@/lib/content";
+import type { NavGroup } from "@/lib/content";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CollapsibleNavGroup } from "@/components/collapsible-nav-group";
+import { LanguageSwitcher } from "@/components/language-switcher";
 
 export function localizeHref(href: string, locale: string) {
   if (locale === "en") return href;
@@ -29,6 +30,7 @@ export async function SiteHeader({ locale }: { locale: string }) {
         ))}
       </nav>
       <div className="flex items-center gap-2">
+        <LanguageSwitcher locale={locale} />
         <ThemeToggle label={t("toggleTheme")} />
         <Sheet>
           <SheetTrigger asChild className="md:hidden"><Button variant="outline" size="icon" aria-label={t("menu")}><Menu className="h-4 w-4" /></Button></SheetTrigger>
@@ -52,9 +54,8 @@ export function Breadcrumbs({ items }: { items: { label: string; href?: string }
   return <nav className="mb-7 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">{items.map((item, index) => <span key={`${item.label}-${index}`} className="flex items-center gap-2">{index > 0 && <ChevronRight className="h-4 w-4" />}{item.href ? <Link className="hover:text-foreground" href={item.href}>{item.label}</Link> : <span className="text-foreground">{item.label}</span>}</span>)}</nav>;
 }
 
-export async function WikiSidebar({ locale }: { locale: string }) {
+export async function WikiSidebar({ locale, navGroups }: { locale: string; navGroups: NavGroup[] }) {
   const t = await getTranslations({ locale, namespace: "shared" });
-  const navGroups = getDynamicNavigation(locale as "en" | "ja");
   return <aside className="space-y-6 lg:sticky lg:top-24"><section className="rounded-2xl border border-border bg-card/60 p-5 shadow-sm"><h3 className="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-muted-foreground">{t("wikiNavigation")}</h3><div className="space-y-4">{navGroups.map((group) => <CollapsibleNavGroup key={group.slug} title={group.title} icon={<span className="grid h-4 w-4 place-items-center rounded text-[10px] font-bold text-[hsl(var(--nav-theme))]">{group.title[0]}</span>} count={group.count} defaultOpen={group.slug === "bosses"}><ul className="space-y-1">{group.links.map((link) => <li key={link.href}><Link href={localizeHref(link.href, locale)} className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"><span className="truncate">{link.label}</span>{link.badge && <Badge variant="secondary" className="ml-auto h-5 border-border px-1.5 text-[10px]">{link.badge}</Badge>}</Link></li>)}</ul></CollapsibleNavGroup>)}</div></section><section className="rounded-2xl border border-border bg-card/60 p-5"><h3 className="mb-3 text-sm font-bold text-foreground">{t("activeCodes")}</h3><div className="space-y-3 text-sm"><div className="rounded-xl bg-muted p-3"><code className="font-bold text-foreground">FULLRELEASE</code><p className="mt-1 text-muted-foreground">1x Manipulator's Eyepatch (Limited) + 10x Clan Reroll</p></div><div className="rounded-xl bg-muted p-3"><code className="font-bold text-foreground">75KLIKES</code><p className="mt-1 text-muted-foreground">3x Ability Reroll</p></div><Link href={localizeHref("/codes", locale)} className="inline-flex items-center gap-1 text-sm font-semibold text-[hsl(var(--nav-theme))]">{t("viewAllCodes")} <ChevronRight className="h-4 w-4" /></Link></div></section></aside>;
 }
 
