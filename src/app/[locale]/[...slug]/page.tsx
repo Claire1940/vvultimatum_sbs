@@ -21,14 +21,20 @@ function languageAlternates(pathname: string) {
 
 export async function generateStaticParams() {
   const paths = await getAllContentPaths("en");
-  return [{ slug: ["bosses"] }, ...paths.map((item) => ({ slug: [item.contentType, ...item.slug] }))];
+  const listingPages = CONTENT_TYPES.map((ct) => ({ slug: [ct] }));
+  return [...listingPages, ...paths.map((item) => ({ slug: [item.contentType, ...item.slug] }))];
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale; slug: string[] }> }): Promise<Metadata> {
   const { locale, slug } = await params;
   const messages = (await getMessages({ locale })) as Messages;
-  if (slug.length === 1 && slug[0] === "bosses") {
-    return { title: messages.bosses.meta.title, description: messages.bosses.meta.description, alternates: { canonical: "/bosses", languages: languageAlternates("/bosses") }, openGraph: { title: messages.bosses.meta.title, description: messages.bosses.meta.description, url: `${siteUrl}/bosses`, images: [`${siteUrl}/images/hero.webp`] } };
+  if (slug.length === 1 && CONTENT_TYPES.includes(slug[0])) {
+    const ct = slug[0];
+    const ctTitle = ct.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+    const ctMessages = (messages as unknown as Record<string, Record<string, string>>)[ct];
+    const title = ctMessages?.overviewTitle || `${ctTitle} — VV Ultimatum Wiki`;
+    const description = ctMessages?.overviewDescription || `Browse all ${ctTitle.toLowerCase()} guides and resources for VV Ultimatum.`;
+    return { title, description, alternates: { canonical: `/${ct}`, languages: languageAlternates(`/${ct}`) }, openGraph: { title, description, url: `${siteUrl}/${ct}`, images: [`${siteUrl}/images/hero.webp`] } };
   }
   const [contentType, ...articleSlug] = slug;
   const item = await getContent(contentType, articleSlug, locale);

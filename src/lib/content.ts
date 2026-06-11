@@ -240,18 +240,15 @@ const GROUP_TITLES: Record<string, string> = {
   bosses: "Bosses",
   races: "Races",
   maps: "Maps & Areas",
-  builds: "Builds & Skills",
   skills: "Skills",
-  items: "Systems & Items",
+  codes: "Codes",
+  guide: "Getting Started",
   "tier-list": "Tier Lists",
-  progression: "Progression",
-  guides: "Getting Started",
 };
 
 // 分组排序顺序
 const GROUP_ORDER: string[] = [
-  "guides", "races", "bosses", "maps", "builds", "skills",
-  "items", "tier-list", "progression",
+  "guide", "races", "bosses", "maps", "skills", "codes", "tier-list",
 ];
 
 /**
