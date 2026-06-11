@@ -222,6 +222,105 @@ export async function getContent(contentType: string, slugSegments: string[], la
 }
 
 /**
+ * 导航分组结构（用于动态 Wiki Navigation）
+ */
+export interface NavGroup {
+  /** 分组标题，来自目录名转人类可读格式，如 "bosses" → "Bosses" */
+  title: string;
+  /** 该分组下的文章数量 */
+  count: number;
+  /** 分组 slug（即目录名，如 "bosses"） */
+  slug: string;
+  /** 文章链接列表 */
+  links: Array<{ label: string; href: string; badge?: string }>;
+}
+
+// 分组标题映射：slug → 人类可读标题
+const GROUP_TITLES: Record<string, string> = {
+  bosses: "Bosses",
+  races: "Races",
+  maps: "Maps & Areas",
+  builds: "Builds & Skills",
+  skills: "Skills",
+  items: "Systems & Items",
+  "tier-list": "Tier Lists",
+  progression: "Progression",
+  guides: "Getting Started",
+};
+
+// 分组排序顺序
+const GROUP_ORDER: string[] = [
+  "guides", "races", "bosses", "maps", "builds", "skills",
+  "items", "tier-list", "progression",
+];
+
+/**
+ * 动态生成 Wiki Navigation 分组
+ * 扫描 content/<locale>/ 下的所有 MDX 文件，按子目录分组
+ * 同时为列表页添加 Overview 入口
+ */
+export function getDynamicNavigation(language: Locale = "en"): NavGroup[] {
+  const localeDir = path.join(CONTENT_ROOT, language);
+  if (!fs.existsSync(localeDir)) return [];
+
+  const entries = fs.readdirSync(localeDir, { withFileTypes: true });
+  const groups: NavGroup[] = [];
+
+  for (const entry of entries) {
+    if (!entry.isDirectory()) continue;
+    const groupSlug = entry.name;
+    const groupDir = path.join(localeDir, groupSlug);
+    const slugPaths = getSlugsFromDirectory(groupDir);
+
+    if (slugPaths.length === 0) continue;
+
+    const links: NavGroup["links"] = [];
+    // 添加 Overview 入口
+    links.push({ label: "Overview", href: `/${groupSlug}` });
+
+    for (const segments of slugPaths) {
+      const articleSlug = segments.join("/");
+      const mdxFilePath = findFileBySlug(groupDir, articleSlug);
+      if (!mdxFilePath) continue;
+
+      const fullPath = path.join(groupDir, `${mdxFilePath}.mdx`);
+      let title = segments[segments.length - 1].replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+      let badge: string | undefined;
+
+      try {
+        const source = fs.readFileSync(fullPath, "utf-8");
+        // 提取 metadata.title
+        const titleMatch = source.match(/title:\s*["'](.+?)["']/);
+        if (titleMatch) title = titleMatch[1];
+        // 提取 metadata.badge
+        const badgeMatch = source.match(/badge:\s*["'](.+?)["']/);
+        if (badgeMatch) badge = badgeMatch[1];
+      } catch {
+        // 读取失败用默认标题
+      }
+
+      links.push({ label: title, href: `/${groupSlug}/${articleSlug}`, badge });
+    }
+
+    groups.push({
+      title: GROUP_TITLES[groupSlug] || groupSlug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()),
+      count: links.length - 1, // 减去 Overview
+      slug: groupSlug,
+      links,
+    });
+  }
+
+  // 按 GROUP_ORDER 排序
+  groups.sort((a, b) => {
+    const ai = GROUP_ORDER.indexOf(a.slug);
+    const bi = GROUP_ORDER.indexOf(b.slug);
+    return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+  });
+
+  return groups;
+}
+
+/**
  * 获取所有内容路径（用于 generateStaticParams）
  */
 export async function getAllContentPaths(language: Locale) {
