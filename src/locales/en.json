@@ -118,7 +118,9 @@
     "nextSteps": "Next Steps",
     "needHelp": "Need Help?",
     "relatedReading": "Related Reading",
-    "officialMedia": "Official media"
+    "officialMedia": "Official media",
+    "tableOfContents": "Table of Contents",
+    "toggleToc": "Toggle TOC"
   },
   "footer": {
     "aboutTitle": "VV Ultimatum Wiki",
