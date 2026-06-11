@@ -47,29 +47,33 @@ export default function HomePageClient({ home, locale, articles }: { home: Home;
         <div><p className="text-sm font-semibold text-[hsl(var(--nav-theme))]">{home.start.eyebrow}</p><h2 className="mt-1 text-3xl font-bold tracking-tight">{home.start.title}</h2><div className="mt-5 grid gap-3 sm:grid-cols-2">{home.start.cards.map((card) => <Link key={card.number} href={localizeHref(card.href, locale)} className="rounded-2xl border border-border bg-card/70 p-5 transition hover:-translate-y-0.5 hover:border-[hsl(var(--nav-theme-light))]"><span className="grid h-9 w-9 place-items-center rounded-full bg-[hsl(var(--nav-theme))] text-sm font-bold text-primary-foreground">{card.number}</span><h3 className="mt-4 font-bold text-foreground">{card.title}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{card.description}</p></Link>)}</div></div>
       </section>
 
-      {/* Dynamic Content Section — loads from /content */}
+      {/* Dynamic Content Section — horizontal scrollable carousel */}
       {articles.length > 0 && (
         <section>
-          <p className="text-sm font-semibold text-[hsl(var(--nav-theme))]">{home.popular.eyebrow}</p>
-          <h2 className="mt-1 text-3xl font-bold tracking-tight">{home.popular.title}</h2>
-          <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-semibold text-[hsl(var(--nav-theme))]">{home.popular.eyebrow}</p>
+              <h2 className="mt-1 text-3xl font-bold tracking-tight">{home.popular.title}</h2>
+            </div>
+            {home.popular.quickLinks && home.popular.quickLinks.length > 0 && (
+              <div className="hidden gap-2 sm:flex">{home.popular.quickLinks.map((link) => <Badge key={link} variant="outline" className="border-border px-3 py-1 text-muted-foreground">{link}</Badge>)}</div>
+            )}
+          </div>
+          <div className="mt-6 flex gap-4 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent">
             {articles.map((article, index) => {
               const Icon = icons[index % icons.length];
               return (
-                <Link key={`/${article.contentType}/${article.slug}`} href={localizeHref(`/${article.contentType}/${article.slug}`, locale)} className="group rounded-2xl border border-border bg-card/70 p-5 transition hover:border-[hsl(var(--nav-theme-light))]">
+                <Link key={`/${article.contentType}/${article.slug}`} href={localizeHref(`/${article.contentType}/${article.slug}`, locale)} className="group min-w-[260px] max-w-[300px] flex-shrink-0 rounded-2xl border border-border bg-card/70 p-5 transition hover:border-[hsl(var(--nav-theme-light))]">
                   <div className="flex items-center justify-between">
                     <span className="grid h-10 w-10 place-items-center rounded-xl bg-muted text-[hsl(var(--nav-theme))]"><Icon className="h-5 w-5" /></span>
                     {article.metadata.badge && <Badge variant="secondary">{article.metadata.badge}</Badge>}
                   </div>
                   <h3 className="mt-4 text-lg font-bold text-foreground group-hover:text-[hsl(var(--nav-theme))]">{article.metadata.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{article.metadata.description}</p>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground line-clamp-3">{article.metadata.description}</p>
                 </Link>
               );
             })}
           </div>
-          {home.popular.quickLinks && home.popular.quickLinks.length > 0 && (
-            <div className="mt-6 flex flex-wrap gap-2">{home.popular.quickLinks.map((link) => <Badge key={link} variant="outline" className="border-border px-3 py-1 text-muted-foreground">{link}</Badge>)}</div>
-          )}
         </section>
       )}
 
