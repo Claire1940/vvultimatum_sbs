@@ -3,6 +3,7 @@ import { BookOpen, Code2, Flame, Map, ScrollText, Shield, Skull, Swords, Trophy,
 export const NAVIGATION_CONFIG = [
   { key: "races", path: "/races", icon: Users, isContentType: false },
   { key: "bosses", path: "/bosses", icon: Swords, isContentType: true },
+  { key: "guide", path: "/guide", icon: BookOpen, isContentType: true },
   { key: "guides", path: "/beginner-guide", icon: BookOpen, isContentType: false },
   { key: "codes", path: "/codes", icon: Code2, isContentType: false },
   { key: "tierList", path: "/tier-list", icon: Trophy, isContentType: false },

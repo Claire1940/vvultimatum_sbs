@@ -15,7 +15,8 @@
     "updates": "Updates",
     "home": "Home",
     "menu": "Menu",
-    "toggleTheme": "Toggle theme"
+    "toggleTheme": "Toggle theme",
+    "guide": "Guide"
   },
   "home": {
     "meta": {
@@ -26,7 +27,13 @@
       "eyebrow": "Fan-Made Community Wiki",
       "title": "VV: ULTIMATUM",
       "description": "Your complete companion for VV: ULTIMATUM on Roblox. Master all three races Shinigami, Quincy, and Hollow with in-depth guides, boss strategies, build optimization, and the latest codes.",
-      "stats": ["Launched Jun 5", "Updated Jun 11", "3 Races", "Lv100 Cap", "130+ Skills"],
+      "stats": [
+        "Launched Jun 5",
+        "Updated Jun 11",
+        "3 Races",
+        "Lv100 Cap",
+        "130+ Skills"
+      ],
       "primaryCta": "Start Beginner Guide",
       "secondaryCta": "Compare Races",
       "tertiaryCta": "Check Active Codes",
@@ -36,25 +43,65 @@
       "title": "Latest Game Updates",
       "browse": "Browse All Game Updates",
       "items": [
-        { "type": "minor", "title": "Trello Expansion: 5 New Charms, New Weapons & More!", "date": "Jun 10", "href": "/charms" },
-        { "type": "milestone", "title": "2 New Codes: FULLRELEASE & 75KLIKES!", "date": "Jun 9", "href": "/codes" },
-        { "type": "minor", "title": "Code SDFIX Has Expired", "date": "Jun 9", "href": "/codes" }
+        {
+          "type": "minor",
+          "title": "Trello Expansion: 5 New Charms, New Weapons & More!",
+          "date": "Jun 10",
+          "href": "/charms"
+        },
+        {
+          "type": "milestone",
+          "title": "2 New Codes: FULLRELEASE & 75KLIKES!",
+          "date": "Jun 9",
+          "href": "/codes"
+        },
+        {
+          "type": "minor",
+          "title": "Code SDFIX Has Expired",
+          "date": "Jun 9",
+          "href": "/codes"
+        }
       ]
     },
     "start": {
       "eyebrow": "Start Here",
       "title": "Your VV Ultimatum Journey",
       "cards": [
-        { "number": "1", "title": "Learn the Basics", "description": "Controls, combat system, quests, and everything you need from your first login.", "href": "/beginner-guide" },
-        { "number": "2", "title": "Pick Your Race", "description": "Compare Shinigami, Quincy, and Hollow to find the best fit for your playstyle.", "href": "/races/best-race" },
-        { "number": "3", "title": "Choose Your Path", "description": "Explore each race's unique progression Shikai, Resurreccion, Schrift, and evolution paths.", "href": "/races" },
-        { "number": "4", "title": "Gear Up & Optimize", "description": "94 equipment items, 72 Spirit Charms, and skill essences maximize your build's potential.", "href": "/equipment" }
+        {
+          "number": "1",
+          "title": "Learn the Basics",
+          "description": "Controls, combat system, quests, and everything you need from your first login.",
+          "href": "/beginner-guide"
+        },
+        {
+          "number": "2",
+          "title": "Pick Your Race",
+          "description": "Compare Shinigami, Quincy, and Hollow to find the best fit for your playstyle.",
+          "href": "/races/best-race"
+        },
+        {
+          "number": "3",
+          "title": "Choose Your Path",
+          "description": "Explore each race's unique progression Shikai, Resurreccion, Schrift, and evolution paths.",
+          "href": "/races"
+        },
+        {
+          "number": "4",
+          "title": "Gear Up & Optimize",
+          "description": "94 equipment items, 72 Spirit Charms, and skill essences maximize your build's potential.",
+          "href": "/equipment"
+        }
       ]
     },
     "popular": {
       "eyebrow": "Popular Pages",
       "title": "Trending Now",
-      "quickLinks": ["Hollow Progression", "Fastest Leveling", "Spirit Charms", "All Boss Guides"]
+      "quickLinks": [
+        "Hollow Progression",
+        "Fastest Leveling",
+        "Spirit Charms",
+        "All Boss Guides"
+      ]
     },
     "aboutGame": {
       "title": "What is VV: ULTIMATUM?",
@@ -63,13 +110,34 @@
         "Whether you're unlocking your first Shikai, evolving from a base Hollow into an Arrancar, or grinding Quincy Lieutenant missions, our wiki covers every system with detailed guides, data tables, and step-by-step walkthroughs."
       ],
       "stats": [
-        { "label": "Developer", "value": "Midnight Continent" },
-        { "label": "Platform", "value": "Roblox" },
-        { "label": "Genre", "value": "Fighting RPG" },
-        { "label": "Visits", "value": "12.6M+" },
-        { "label": "Favorites", "value": "243K+" },
-        { "label": "Total Skills", "value": "130+" },
-        { "label": "Level Cap", "value": "100" }
+        {
+          "label": "Developer",
+          "value": "Midnight Continent"
+        },
+        {
+          "label": "Platform",
+          "value": "Roblox"
+        },
+        {
+          "label": "Genre",
+          "value": "Fighting RPG"
+        },
+        {
+          "label": "Visits",
+          "value": "12.6M+"
+        },
+        {
+          "label": "Favorites",
+          "value": "243K+"
+        },
+        {
+          "label": "Total Skills",
+          "value": "130+"
+        },
+        {
+          "label": "Level Cap",
+          "value": "100"
+        }
       ],
       "cta": "Explore All Guides"
     },
@@ -81,11 +149,26 @@
       "title": "Frequently Asked Questions",
       "description": "Quick answers to the most common questions about VV: ULTIMATUM.",
       "items": [
-        { "question": "What is VV: ULTIMATUM?", "answer": "VV: ULTIMATUM is a free-to-play fighting RPG on Roblox based on the Bleach anime. You choose one of three races Shinigami (Soul Reaper), Quincy, or Hollow each with unique progression, combat abilities, and evolution systems. The game features 130+ skills, a level 100 cap, boss fights, and deep build customization." },
-        { "question": "Which race should beginners pick?", "answer": "Shinigami is the most straightforward starter race, while Hollow and Quincy offer more specialized progression routes. Compare their abilities before committing." },
-        { "question": "What is the current level cap?", "answer": "The current level cap is 100, with more than 130 skills available across trees and race progression systems." },
-        { "question": "Where do I find active codes?", "answer": "Use the Codes page for working codes, rewards, expiration notes, and redeem instructions." },
-        { "question": "Are boss guides updated?", "answer": "Boss pages are organized with spawn notes, attack patterns, strategies, drop tables, and related next steps for progression." }
+        {
+          "question": "What is VV: ULTIMATUM?",
+          "answer": "VV: ULTIMATUM is a free-to-play fighting RPG on Roblox based on the Bleach anime. You choose one of three races Shinigami (Soul Reaper), Quincy, or Hollow each with unique progression, combat abilities, and evolution systems. The game features 130+ skills, a level 100 cap, boss fights, and deep build customization."
+        },
+        {
+          "question": "Which race should beginners pick?",
+          "answer": "Shinigami is the most straightforward starter race, while Hollow and Quincy offer more specialized progression routes. Compare their abilities before committing."
+        },
+        {
+          "question": "What is the current level cap?",
+          "answer": "The current level cap is 100, with more than 130 skills available across trees and race progression systems."
+        },
+        {
+          "question": "Where do I find active codes?",
+          "answer": "Use the Codes page for working codes, rewards, expiration notes, and redeem instructions."
+        },
+        {
+          "question": "Are boss guides updated?",
+          "answer": "Boss pages are organized with spawn notes, attack patterns, strategies, drop tables, and related next steps for progression."
+        }
       ]
     },
     "finalCta": {
