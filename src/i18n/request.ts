@@ -11,7 +11,7 @@ type Messages = typeof en;
 
 const messagesMap: Record<string, Partial<Messages>> = {
   en,
-  ja,
+  ja: ja as Partial<Messages>,
 };
 
 /**
