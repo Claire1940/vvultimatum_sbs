@@ -13,6 +13,7 @@ const withMDX = createMDX({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "standalone",
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   allowedDevOrigins: ["*.preview.same-app.com"],
   images: {
