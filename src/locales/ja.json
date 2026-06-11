@@ -1,0 +1,54 @@
+{
+  "site": {
+    "name": "VV: ULTIMATUM",
+    "shortName": "VV Ultimatum",
+    "tagline": "ファンメイド コミュニティ Wiki",
+    "description": "Roblox『VV: ULTIMATUM』の完全攻略Wiki。死神・滅却師・虚の3つの種族を極めるためのガイド、ボス攻略、ビルド最適化、最新コード情報。",
+    "legalNotice": "非公式ファンWiki。プレイヤーによる、プレイヤーのための攻略サイト。"
+  },
+  "nav": {
+    "races": "種族",
+    "bosses": "ボス",
+    "guides": "ガイド",
+    "codes": "コード",
+    "tierList": " Tier List",
+    "updates": "アップデート",
+    "home": "ホーム",
+    "menu": "メニュー",
+    "toggleTheme": "テーマ切替"
+  },
+  "bosses": {
+    "meta": {
+      "title": "ボス — 完全攻略ガイド | VV Ultimatum Wiki",
+      "description": "VV: ULTIMATUM の全ボス攻略ガイド。チュートリアルのGelumからエンドゲームコンテンツまで、攻略・ドロップ・リスポーン情報。"
+    },
+    "overviewTitle": "ボス一覧",
+    "overviewDescription": "VV: ULTIMATUM に登場する全ボスの攻略ガイド。チュートリアルのGelumからエンドゲームのGelid Dweller、Gauntletチャレンジまで。",
+    "guidesTitle": "ボス攻略ガイド",
+    "readMore": "続きを読む",
+    "new": "New",
+    "popular": "人気"
+  },
+  "shared": {
+    "wikiNavigation": "Wiki ナビゲーション",
+    "activeCodes": "有効なコード",
+    "updated": "更新",
+    "viewAllCodes": "全コードを見る",
+    "playOnRoblox": "Robloxでプレイ",
+    "inThisSection": "目次",
+    "nextSteps": "次のステップ",
+    "needHelp": "お困りですか？",
+    "relatedReading": "関連記事",
+    "officialMedia": "公式メディア",
+    "tableOfContents": "目次",
+    "toggleToc": "目次を開く/閉じる"
+  },
+  "footer": {
+    "aboutTitle": "VV Ultimatum Wiki",
+    "about": "VV Ultimatum Wiki は、新規プレイヤーからベテランまで、進行ルート・種族・ボス・ビルドなど幅広いゲーム知識を網羅したファン制作の攻略サイトです。",
+    "quickLinks": "クイックリンク",
+    "guides": "ガイド",
+    "legal": "法務",
+    "copyright": "© 2026 VV: ULTIMATUM Wiki. Midnight Continent および Roblox とは無関係です。"
+  }
+}

@@ -1,0 +1,2 @@
+# Advertising authorization file for VV: ULTIMATUM Wiki clone.
+# Do not delete this file.

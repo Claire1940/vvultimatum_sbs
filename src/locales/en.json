@@ -1,0 +1,153 @@
+{
+  "site": {
+    "name": "VV: ULTIMATUM",
+    "shortName": "VV Ultimatum",
+    "tagline": "Fan-Made Community Wiki",
+    "description": "Your complete companion for VV: ULTIMATUM on Roblox. Master all three races Shinigami, Quincy, and Hollow with in-depth guides, boss strategies, build optimization, and the latest codes.",
+    "legalNotice": "Non-official fan wiki. Made by players, for players."
+  },
+  "nav": {
+    "races": "Races",
+    "bosses": "Bosses",
+    "guides": "Guides",
+    "codes": "Codes",
+    "tierList": "Tier List",
+    "updates": "Updates",
+    "home": "Home",
+    "menu": "Menu",
+    "toggleTheme": "Toggle theme"
+  },
+  "home": {
+    "meta": {
+      "title": "VV: ULTIMATUM — Codes, Builds, Guides | VV Ultimatum Wiki",
+      "description": "Complete VV: ULTIMATUM wiki with active codes, boss strategies, race guides, build optimization, and progression walkthroughs for Shinigami, Quincy, and Hollow."
+    },
+    "hero": {
+      "eyebrow": "Fan-Made Community Wiki",
+      "title": "VV: ULTIMATUM",
+      "description": "Your complete companion for VV: ULTIMATUM on Roblox. Master all three races Shinigami, Quincy, and Hollow with in-depth guides, boss strategies, build optimization, and the latest codes.",
+      "stats": ["Launched Jun 5", "Updated Jun 11", "3 Races", "Lv100 Cap", "130+ Skills"],
+      "primaryCta": "Start Beginner Guide",
+      "secondaryCta": "Compare Races",
+      "tertiaryCta": "Check Active Codes",
+      "videoLabel": "Official media"
+    },
+    "updates": {
+      "title": "Latest Game Updates",
+      "browse": "Browse All Game Updates",
+      "items": [
+        { "type": "minor", "title": "Trello Expansion: 5 New Charms, New Weapons & More!", "date": "Jun 10", "href": "/charms" },
+        { "type": "milestone", "title": "2 New Codes: FULLRELEASE & 75KLIKES!", "date": "Jun 9", "href": "/codes" },
+        { "type": "minor", "title": "Code SDFIX Has Expired", "date": "Jun 9", "href": "/codes" }
+      ]
+    },
+    "start": {
+      "eyebrow": "Start Here",
+      "title": "Your VV Ultimatum Journey",
+      "cards": [
+        { "number": "1", "title": "Learn the Basics", "description": "Controls, combat system, quests, and everything you need from your first login.", "href": "/beginner-guide" },
+        { "number": "2", "title": "Pick Your Race", "description": "Compare Shinigami, Quincy, and Hollow to find the best fit for your playstyle.", "href": "/races/best-race" },
+        { "number": "3", "title": "Choose Your Path", "description": "Explore each race's unique progression Shikai, Resurreccion, Schrift, and evolution paths.", "href": "/races" },
+        { "number": "4", "title": "Gear Up & Optimize", "description": "94 equipment items, 72 Spirit Charms, and skill essences maximize your build's potential.", "href": "/equipment" }
+      ]
+    },
+    "popular": {
+      "eyebrow": "Popular Pages",
+      "title": "Trending Now",
+      "quickLinks": ["Hollow Progression", "Fastest Leveling", "Spirit Charms", "All Boss Guides"],
+      "cards": [
+        { "badge": "Beginner", "title": "Beginner Guide", "description": "Everything you need from your first login to mastering the basics of combat and progression.", "href": "/beginner-guide" },
+        { "badge": "Updated", "title": "Active Codes", "description": "All working codes with rewards redeem before they expire.", "href": "/codes" },
+        { "badge": "Updated", "title": "Equipment Database", "description": "94 items across 5 slots complete gear database with stats, rarity, and sources.", "href": "/equipment" },
+        { "badge": "Popular", "title": "Which Race Should You Pick?", "description": "Shinigami, Quincy, or Hollow compare all three and find your perfect playstyle.", "href": "/races/best-race" },
+        { "badge": "New", "title": "Enemies & Monsters", "description": "23 enemy types across 5 regions drops, locations, and farming tips.", "href": "/enemies" },
+        { "badge": "Popular", "title": "Boss Locations & Drops", "description": "Every boss location, drop table, and respawn timer in one reference.", "href": "/boss-locations-drops-respawn-times" },
+        { "badge": "Popular", "title": "Best Builds", "description": "Optimal stat allocation, skill tree picks, and Charm combos for every playstyle.", "href": "/builds/best-builds" },
+        { "badge": "New", "title": "Shikai Tier List", "description": "All 6 Shinigami Shikai types ranked by PvP and PvE performance.", "href": "/tier-list/shikai" },
+        { "badge": "New", "title": "World Events Guide", "description": "Supply Caches, Raids, and endgame world events with rare rewards.", "href": "/world-events" }
+      ]
+    },
+    "aboutGame": {
+      "title": "What is VV: ULTIMATUM?",
+      "paragraphs": [
+        "VV: ULTIMATUM is a stylized fighting RPG on Roblox inspired by the Bleach anime universe. Choose from three playable races Shinigami, Quincy, or Hollow each with unique progression systems, unlockable abilities, and evolution paths. Master over 130 skills as you fight your way to the level 100 cap.",
+        "Whether you're unlocking your first Shikai, evolving from a base Hollow into an Arrancar, or grinding Quincy Lieutenant missions, our wiki covers every system with detailed guides, data tables, and step-by-step walkthroughs."
+      ],
+      "stats": [
+        { "label": "Developer", "value": "Midnight Continent" },
+        { "label": "Platform", "value": "Roblox" },
+        { "label": "Genre", "value": "Fighting RPG" },
+        { "label": "Visits", "value": "12.6M+" },
+        { "label": "Favorites", "value": "243K+" },
+        { "label": "Total Skills", "value": "130+" },
+        { "label": "Level Cap", "value": "100" }
+      ],
+      "cta": "Explore All Guides"
+    },
+    "explore": {
+      "title": "Explore the Wiki",
+      "description": "Everything you need to master VV: ULTIMATUM, organized and searchable.",
+      "cards": [
+        { "title": "Race Guides", "description": "In-depth guides for Shinigami, Quincy, and Hollow including evolution paths and unlock requirements.", "href": "/races" },
+        { "title": "Boss Strategies", "description": "Every boss fight broken down with attack patterns, counters, and recommended levels.", "href": "/bosses" },
+        { "title": "Build Optimization", "description": "Optimal stat allocation, skill tree picks, and Spirit Charm combos for every playstyle.", "href": "/builds" },
+        { "title": "Area Guides", "description": "Complete zone breakdowns with level ranges, key NPCs, quests, and hidden areas.", "href": "/maps" },
+        { "title": "Clan Database", "description": "Full clan lists with rarity, stat buffs, and recommendations for each race.", "href": "/clans" },
+        { "title": "Active Codes", "description": "Up-to-date list of working codes with redemption instructions and reward details.", "href": "/codes" },
+        { "title": "Combat Mechanics", "description": "Master blocking, parrying, posture breaks, and the red-attack counter system.", "href": "/combat" },
+        { "title": "Progression Paths", "description": "Step-by-step walkthroughs for Shikai, Resurreccion, Schrift, and more.", "href": "/beginner-guide" },
+        { "title": "Trait Rankings", "description": "All 13 Hollow traits ranked with detailed pros, cons, and build synergies.", "href": "/tier-list/best-hollow-traits" }
+      ]
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "description": "Quick answers to the most common questions about VV: ULTIMATUM.",
+      "items": [
+        { "question": "What is VV: ULTIMATUM?", "answer": "VV: ULTIMATUM is a free-to-play fighting RPG on Roblox based on the Bleach anime. You choose one of three races Shinigami (Soul Reaper), Quincy, or Hollow each with unique progression, combat abilities, and evolution systems. The game features 130+ skills, a level 100 cap, boss fights, and deep build customization." },
+        { "question": "Which race should beginners pick?", "answer": "Shinigami is the most straightforward starter race, while Hollow and Quincy offer more specialized progression routes. Compare their abilities before committing." },
+        { "question": "What is the current level cap?", "answer": "The current level cap is 100, with more than 130 skills available across trees and race progression systems." },
+        { "question": "Where do I find active codes?", "answer": "Use the Codes page for working codes, rewards, expiration notes, and redeem instructions." },
+        { "question": "Are boss guides updated?", "answer": "Boss pages are organized with spawn notes, attack patterns, strategies, drop tables, and related next steps for progression." }
+      ]
+    },
+    "finalCta": {
+      "title": "Ready to Master VV: ULTIMATUM?",
+      "description": "From your first steps in Fort Adams to endgame boss fights our community wiki has you covered with free, up-to-date guides.",
+      "primary": "Read the Beginner Guide",
+      "secondary": "Play on Roblox"
+    }
+  },
+  "bosses": {
+    "meta": {
+      "title": "Bosses — Complete Guide & Walkthrough | VV Ultimatum Wiki",
+      "description": "Complete boss guides for VV: ULTIMATUM — all bosses from tutorial Gelum to endgame encounters with strategies, drops, and respawn timers."
+    },
+    "overviewTitle": "Bosses Overview",
+    "overviewDescription": "Complete guides for every boss encounter in VV: ULTIMATUM 13 bosses from the tutorial knight Gelum to endgame encounters like the Gelid Dweller and Gauntlet challenges.",
+    "body": "Bosses in VV: ULTIMATUM serve as skill gates and progression milestones. Some, like Gelum, teach you the combat fundamentals during the tutorial. Others, such as the Shikai Spirit and Resurreccion Spirit, are inner-world encounters tied directly to your race's power unlock. Area bosses like Dragonfly, King Croc, and Securis guard access to new zones and rewards. Recent additions include the Rogue Commander with his Minions, the ice-themed The Everfrosted, and four brand new endgame bosses: The Gelid Dweller, Cinder of the Broken Sky, Devourer of Hosts, and the Wandering Swordsman (Junichiro). Each boss has distinct attack patterns and telegraphed moves you need to learn. Use the guides below to prepare for every fight.",
+    "guidesTitle": "Bosses Guides",
+    "readMore": "Read more",
+    "new": "New",
+    "popular": "Popular"
+  },
+  "shared": {
+    "wikiNavigation": "Wiki Navigation",
+    "activeCodes": "Active Codes",
+    "updated": "Updated",
+    "viewAllCodes": "View all codes",
+    "playOnRoblox": "Play on Roblox",
+    "inThisSection": "In this section",
+    "nextSteps": "Next Steps",
+    "needHelp": "Need Help?",
+    "relatedReading": "Related Reading",
+    "officialMedia": "Official media"
+  },
+  "footer": {
+    "aboutTitle": "VV Ultimatum Wiki",
+    "about": "VV Ultimatum Wiki is an independent fan-built guide hub covering progression routes, races, bosses, builds, and essential game knowledge for new and veteran players alike.",
+    "quickLinks": "Quick Links",
+    "guides": "Guides",
+    "legal": "Legal",
+    "copyright": "2026 VV: ULTIMATUM Wiki. Not affiliated with Midnight Continent or Roblox."
+  }
+}
