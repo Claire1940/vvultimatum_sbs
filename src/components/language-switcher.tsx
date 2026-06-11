@@ -1,9 +1,15 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { Globe } from "lucide-react";
+import { Check, Globe } from "lucide-react";
 import { routing, type Locale } from "@/i18n/routing";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const LOCALE_LABELS: Record<Locale, string> = {
   en: "English",
@@ -11,28 +17,20 @@ const LOCALE_LABELS: Record<Locale, string> = {
 };
 
 /**
- * 语言切换器：显示当前语言，点击切换到另一个语言
- * en 路径无前缀 (/bosses/gelum)
- * ja 路径有前缀 (/ja/bosses/gelum)
- *
- * next-intl middleware 使用 NEXT_LOCALE cookie + localePrefix: "as-needed"
- * 切换时必须先设置 cookie，否则 middleware 会重定向回原语言
+ * 语言切换器（下拉菜单版）：点击 Globe 图标展开所有语言列表
+ * 当前语言显示 ✓ 标记，选择后跳转对应语言路径
+ * 支持 2+ 个语言，扩展时只需在 routing.ts 添加 locale 即可
  */
 export function LanguageSwitcher({ locale }: { locale: string }) {
   const pathname = usePathname();
   const router = useRouter();
 
-  // 当前 locale 不在列表中则不渲染
   if (!routing.locales.includes(locale as Locale)) return null;
-  // 只有一个语言时不需要切换器
   if (routing.locales.length <= 1) return null;
 
-  const handleSwitch = () => {
-    // 找到下一个语言（循环切换）
-    const currentIndex = routing.locales.indexOf(locale as Locale);
-    const nextLocale = routing.locales[(currentIndex + 1) % routing.locales.length];
+  const handleSwitch = (nextLocale: Locale) => {
+    if (nextLocale === locale) return;
 
-    // 计算新路径
     let newPath = pathname;
 
     // 移除当前 locale 前缀（如果有）
@@ -52,14 +50,25 @@ export function LanguageSwitcher({ locale }: { locale: string }) {
   };
 
   return (
-    <Button
-      variant="ghost"
-      size="sm"
-      onClick={handleSwitch}
-      className="gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground"
-    >
-      <Globe className="h-4 w-4" />
-      <span>{LOCALE_LABELS[locale as Locale]}</span>
-    </Button>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" size="sm" className="gap-1.5 text-xs font-medium text-muted-foreground hover:text-foreground">
+          <Globe className="h-4 w-4" />
+          <span>{LOCALE_LABELS[locale as Locale]}</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="min-w-[140px]">
+        {routing.locales.map((loc) => (
+          <DropdownMenuItem
+            key={loc}
+            onClick={() => handleSwitch(loc)}
+            className="flex items-center justify-between gap-3"
+          >
+            <span>{LOCALE_LABELS[loc]}</span>
+            {loc === (locale as Locale) && <Check className="h-4 w-4 text-[hsl(var(--nav-theme))]" />}
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
