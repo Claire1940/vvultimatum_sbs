@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CollapsibleNavGroup } from "@/components/collapsible-nav-group";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { ClientThemeToggle } from "@/components/theme-toggle";
 
 export function localizeHref(href: string, locale: string) {
   if (locale === "en") return href;
@@ -47,7 +48,7 @@ export async function SiteHeader({ locale }: { locale: string }) {
 }
 
 function ThemeToggle({ label }: { label: string }) {
-  return <Button variant="ghost" size="icon" aria-label={label} className="text-muted-foreground hover:text-foreground"><Sun className="h-4 w-4 dark:hidden" /><Moon className="hidden h-4 w-4 dark:block" /></Button>;
+  return <ClientThemeToggle label={label} />;
 }
 
 export function Breadcrumbs({ items }: { items: { label: string; href?: string }[] }) {

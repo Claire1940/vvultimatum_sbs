@@ -4,6 +4,7 @@ import { hasLocale } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
+import { ThemeProvider } from "next-themes";
 import { JsonLd, SiteFooter, SiteHeader } from "@/components/site";
 import { routing } from "@/i18n/routing";
 
@@ -41,14 +42,16 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   };
 
   return (
-    <html lang={locale} className={`dark ${inter.variable}`} suppressHydrationWarning>
+    <html lang={locale} className={`${inter.variable}`} suppressHydrationWarning>
       <body className="min-h-screen bg-background font-sans text-foreground antialiased">
-        <NextIntlClientProvider messages={messages}>
-          <JsonLd data={organization} />
-          <SiteHeader locale={locale} />
-          {children}
-          <SiteFooter locale={locale} />
-        </NextIntlClientProvider>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <NextIntlClientProvider messages={messages}>
+            <JsonLd data={organization} />
+            <SiteHeader locale={locale} />
+            {children}
+            <SiteFooter locale={locale} />
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
