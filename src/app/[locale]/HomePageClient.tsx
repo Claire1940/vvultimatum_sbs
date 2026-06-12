@@ -14,7 +14,6 @@ type Home = typeof en.home;
 
 const icons: LucideIcon[] = [BookOpen, Shield, Compass, Boxes, Flame, Code2, Swords, MapIcon, Users, Trophy, Skull, Zap, CircleHelp, ScrollText];
 
-const moduleIcons: LucideIcon[] = [Code2, BookOpen, Compass, Trophy, Flame, Swords, Skull, Shield];
 
 export default function HomePageClient({ home, locale, articles, recentArticles }: { home: Home; locale: string; articles: ContentItem[]; recentArticles: ContentItem[] }) {
   const YOUTUBE_VIDEO_ID = "zpvGp5kOg18";
@@ -112,38 +111,111 @@ export default function HomePageClient({ home, locale, articles, recentArticles 
         </section>
       )}
 
-      {/* 8 Modules Grid (from 0meta) */}
+      {/* 8 Module Sections (full-width stacked, matching reference site style) */}
       {home.explore.modules && home.explore.modules.length > 0 && (
         <section>
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-semibold text-[hsl(var(--nav-theme))]">{home.explore.title}</p>
-              <h2 className="mt-1 text-3xl font-bold tracking-tight text-foreground">{home.explore.description}</h2>
-            </div>
+          <h2 className="text-3xl font-bold tracking-tight text-foreground">{home.explore.title}</h2>
+          <p className="mt-2 text-muted-foreground">{home.explore.description}</p>
+
+          {/* Quick nav pills */}
+          <div className="mt-5 flex flex-wrap gap-2">
+            {home.explore.modules.map((mod) => (
+              <Link
+                key={mod.order}
+                href={localizeHref(mod.href, locale)}
+                className="rounded-full border border-border bg-card/70 px-3.5 py-1.5 text-sm text-muted-foreground transition hover:border-[hsl(var(--nav-theme-light))] hover:text-[hsl(var(--nav-theme))]"
+              >
+                {mod.name}
+              </Link>
+            ))}
           </div>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {home.explore.modules.map((mod, idx) => {
-              const Icon = moduleIcons[idx % moduleIcons.length];
-              return (
-                <Link
-                  key={mod.order}
-                  href={localizeHref(mod.href, locale)}
-                  className="group rounded-2xl border border-border bg-card/70 p-5 transition hover:-translate-y-0.5 hover:border-[hsl(var(--nav-theme-light))]"
-                >
-                  <div className="mb-3 flex items-center justify-between">
-                    <span className="grid h-10 w-10 place-items-center rounded-xl bg-muted text-[hsl(var(--nav-theme))]">
-                      <Icon className="h-5 w-5" />
-                    </span>
-                    <Badge variant="secondary" className="text-[10px]">{mod.displayType.replace(/-/g, " ")}</Badge>
-                  </div>
-                  <h3 className="font-bold text-foreground group-hover:text-[hsl(var(--nav-theme))]">{mod.name}</h3>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground line-clamp-2">{mod.description}</p>
-                  <span className="mt-3 inline-flex items-center text-sm font-semibold text-[hsl(var(--nav-theme))]">
-                    Read More <ChevronRight className="ml-1 h-4 w-4" />
-                  </span>
-                </Link>
-              );
-            })}
+
+          {/* Stacked module content sections */}
+          <div className="mt-8 space-y-6">
+            {home.explore.modules.map((mod) => (
+              <div key={mod.order} className="overflow-hidden rounded-2xl border border-border bg-card/70">
+                {/* Module header */}
+                <div className="border-b border-border bg-muted/30 px-6 py-4">
+                  <h3 className="text-lg font-bold text-foreground">{mod.name}</h3>
+                  <p className="mt-1 text-sm leading-7 text-muted-foreground">{mod.description}</p>
+                </div>
+
+                {/* Module preview — styled per displayType */}
+                <div className="px-6 py-5">
+                  {/* code-cards: show active codes */}
+                  {mod.displayType === "code-cards" && mod.highlights && mod.highlights.length > 0 && (
+                    <div className="space-y-3">
+                      {mod.highlights.map((h, i) => (
+                        <div key={i} className="flex items-center justify-between gap-4 rounded-xl border border-border bg-muted p-4">
+                          <div className="flex items-center gap-3">
+                            <code className="rounded-lg bg-background px-3 py-1.5 font-mono text-sm font-bold text-foreground">{h.label}</code>
+                            <span className="text-sm text-muted-foreground">{h.detail}</span>
+                          </div>
+                          {"badge" in h && h.badge && <Badge className="shrink-0 bg-emerald-600 text-white text-[10px]">{h.badge}</Badge>}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* step-by-step: numbered step cards */}
+                  {mod.displayType === "step-by-step" && mod.highlights && mod.highlights.length > 0 && (
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      {mod.highlights.map((h, i) => (
+                        <div key={i} className="flex items-start gap-3">
+                          <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[hsl(var(--nav-theme))] text-xs font-bold text-primary-foreground">{h.label}</span>
+                          <span className="text-sm leading-6 text-muted-foreground">{h.detail}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* tier-grid: S/A/B/C colored cards */}
+                  {mod.displayType === "tier-grid" && mod.highlights && mod.highlights.length > 0 && (
+                    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                      {mod.highlights.map((h, i) => {
+                        const tierColor =
+                          h.label === "S" ? "border-amber-500/40 bg-amber-500/10" :
+                          h.label === "A" ? "border-emerald-500/40 bg-emerald-500/10" :
+                          h.label === "B" ? "border-blue-500/40 bg-blue-500/10" :
+                          h.label === "C" ? "border-zinc-500/40 bg-zinc-500/10" :
+                          "border-border bg-muted";
+                        const tierText =
+                          h.label === "S" ? "text-amber-600 dark:text-amber-400" :
+                          h.label === "A" ? "text-emerald-600 dark:text-emerald-400" :
+                          h.label === "B" ? "text-blue-600 dark:text-blue-400" :
+                          h.label === "C" ? "text-zinc-600 dark:text-zinc-400" :
+                          "text-muted-foreground";
+                        return (
+                          <div key={i} className={`rounded-xl border p-4 ${tierColor}`}>
+                            <span className={`text-sm font-bold ${tierText}`}>{h.label} Tier</span>
+                            <p className="mt-1.5 text-xs leading-5 text-muted-foreground">{h.detail}</p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+
+                  {/* card-list: icon + name cards */}
+                  {mod.displayType === "card-list" && mod.highlights && mod.highlights.length > 0 && (
+                    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                      {mod.highlights.map((h, i) => (
+                        <div key={i} className="flex items-center gap-3 rounded-xl border border-border bg-muted p-3">
+                          <span className="text-xl">{h.label}</span>
+                          <span className="text-sm font-medium text-foreground">{h.detail}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  <Link
+                    href={localizeHref(mod.href, locale)}
+                    className="mt-5 inline-flex items-center text-sm font-semibold text-[hsl(var(--nav-theme))] hover:underline"
+                  >
+                    Read Full Guide <ChevronRight className="ml-1 h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
       )}
