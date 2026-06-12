@@ -22,6 +22,7 @@ export function CollapsibleNavGroup({ title, icon, count, defaultOpen = false, c
       >
         {icon}
         <span>{title}</span>
+        {count !== undefined && <span className="ml-1 text-xs text-muted-foreground">({count})</span>}
         <ChevronDown className={`ml-auto h-4 w-4 shrink-0 text-muted-foreground transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
       {open && children}
