@@ -209,7 +209,9 @@
     "relatedReading": "Related Reading",
     "relatedGuides": "Related Guides",
     "readMore": "Read more",
-    "officialMedia": "Official media"
+    "officialMedia": "Official media",
+    "home": "Home",
+    "noGuidesAvailable": "No guides available yet. Check back soon!"
   },
   "footer": {
     "aboutTitle": "VV Ultimatum Wiki",
@@ -217,6 +219,17 @@
     "quickLinks": "Quick Links",
     "guides": "Guides",
     "legal": "Legal",
-    "copyright": "2026 VV: ULTIMATUM Wiki. Not affiliated with Midnight Continent or Roblox."
+    "copyright": "2026 VV: ULTIMATUM Wiki. Not affiliated with Midnight Continent or Roblox.",
+    "description": "Free Bleach-inspired fighting RPG on Roblox. 3 races, 130+ skills, Lv100 cap.",
+    "playGame": "Play VV: ULTIMATUM",
+    "officialDiscord": "Official Discord",
+    "officialYoutube": "Official YouTube",
+    "vvBuilder": "VV Builder (Skill Planner)",
+    "beginnerGuide": "Beginner Guide",
+    "raceGuides": "Race Guides",
+    "bossGuides": "Boss Guides",
+    "buildGuide": "Build Guide",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
   }
 }

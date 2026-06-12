@@ -209,7 +209,9 @@
     "officialMedia": "公式メディア",
     "relatedGuides": "関連ガイド",
     "readMore": "続きを読む",
-    "toggleToc": "目次を開く/閉じる"
+    "toggleToc": "目次を開く/閉じる",
+    "home": "ホーム",
+    "noGuidesAvailable": "ガイドはまだありません。お楽しみに！"
   },
   "footer": {
     "aboutTitle": "VV Ultimatum Wiki",
@@ -217,6 +219,17 @@
     "quickLinks": "クイックリンク",
     "guides": "ガイド",
     "legal": "法務",
-    "copyright": "© 2026 VV: ULTIMATUM Wiki. Midnight Continent および Roblox とは無関係です。"
+    "copyright": "© 2026 VV: ULTIMATUM Wiki. Midnight Continent および Roblox とは無関係です。",
+    "description": "Roblox の無料 Bleach 系格闘 RPG。3種族、130以上のスキル、Lv100上限。",
+    "playGame": "VV: ULTIMATUM をプレイ",
+    "officialDiscord": "公式 Discord",
+    "officialYoutube": "公式 YouTube",
+    "vvBuilder": "VV Builder（スキルプランナー）",
+    "beginnerGuide": "初心者ガイド",
+    "raceGuides": "種族ガイド",
+    "bossGuides": "ボスガイド",
+    "buildGuide": "ビルドガイド",
+    "privacyPolicy": "プライバシーポリシー",
+    "termsOfService": "利用規約"
   }
 }
