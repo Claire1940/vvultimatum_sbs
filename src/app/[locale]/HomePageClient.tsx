@@ -19,14 +19,6 @@ const moduleIcons: LucideIcon[] = [Code2, BookOpen, Compass, Trophy, Flame, Swor
 export default function HomePageClient({ home, locale, articles, recentArticles }: { home: Home; locale: string; articles: ContentItem[]; recentArticles: ContentItem[] }) {
   const YOUTUBE_VIDEO_ID = "zpvGp5kOg18";
 
-  // 按 contentType 分组
-  const articlesByType = new Map<string, ContentItem[]>();
-  for (const article of articles) {
-    const existing = articlesByType.get(article.contentType) || [];
-    existing.push(article);
-    articlesByType.set(article.contentType, existing);
-  }
-
   return (
     <div className="space-y-16">
       {/* Hero Section */}
@@ -158,27 +150,6 @@ export default function HomePageClient({ home, locale, articles, recentArticles 
 
       {/* About Game (curated, stays in JSON) */}
       <section className="grid gap-8 rounded-3xl border border-border bg-card/60 p-6 lg:grid-cols-[1.1fr_0.9fr]"><div><h2 className="text-3xl font-bold tracking-tight text-foreground">{home.aboutGame.title}</h2>{home.aboutGame.paragraphs.map((p) => <p key={p} className="mt-5 leading-8 text-muted-foreground">{p}</p>)}<Button asChild className="mt-6"><Link href={localizeHref("/guide/vv-ultimatum-beginner-guide-2026", locale)}>{home.aboutGame.cta}</Link></Button></div><div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-2">{home.aboutGame.stats.map((stat) => <div key={stat.label} className="rounded-2xl border border-border bg-background p-4"><p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{stat.label}</p><p className="mt-2 text-xl font-bold text-foreground">{stat.value}</p></div>)}</div></section>
-
-      {/* Explore Sections — one per content type */}
-      {Array.from(articlesByType.entries()).map(([contentType, items], sectionIdx) => {
-        const sectionTitle = contentType.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
-        const Icon = icons[(sectionIdx + 3) % icons.length];
-        return (
-          <section key={contentType}>
-            <h2 className="text-3xl font-bold tracking-tight text-foreground">{sectionTitle} Guides</h2>
-            <p className="mt-2 text-muted-foreground">Explore all {sectionTitle.toLowerCase()} guides and strategies.</p>
-            <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {items.map((article) => (
-                <Link key={`/${article.contentType}/${article.slug}`} href={localizeHref(`/${article.contentType}/${article.slug}`, locale)} className="rounded-2xl border border-border bg-card/70 p-5 transition hover:border-[hsl(var(--nav-theme-light))]">
-                  <Icon className="h-5 w-5 text-[hsl(var(--nav-theme))]" />
-                  <h3 className="mt-4 font-bold text-foreground">{article.metadata.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{article.metadata.description}</p>
-                </Link>
-              ))}
-            </div>
-          </section>
-        );
-      })}
 
       {/* FAQ (curated, stays in JSON) */}
       <section><h2 className="text-3xl font-bold tracking-tight text-foreground">{home.faq.title}</h2><p className="mt-2 text-muted-foreground">{home.faq.description}</p><Accordion type="single" collapsible className="mt-6 rounded-2xl border border-border bg-card/70 px-5">{home.faq.items.map((item, index) => <AccordionItem key={item.question} value={`item-${index}`}><AccordionTrigger className="text-left text-foreground">{item.question}</AccordionTrigger><AccordionContent className="leading-7 text-muted-foreground">{item.answer}</AccordionContent></AccordionItem>)}</Accordion></section>
