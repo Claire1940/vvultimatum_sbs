@@ -65,11 +65,11 @@ export default function HomePageClient({ home, locale, articles, recentArticles 
           <h2 className="mt-1 text-3xl font-bold tracking-tight text-foreground">{home.start.title}</h2>
           <div className="mt-5 grid gap-3 sm:grid-cols-2">
             {home.start.cards.map((card) => (
-              <Link key={card.number} href={localizeHref(card.href, locale)} className="rounded-2xl border border-border bg-card/70 p-5 transition hover:-translate-y-0.5 hover:border-[hsl(var(--nav-theme-light))]">
+              <div key={card.number} className="rounded-2xl border border-border bg-card/70 p-5">
                 <span className="grid h-9 w-9 place-items-center rounded-full bg-[hsl(var(--nav-theme))] text-sm font-bold text-primary-foreground">{card.number}</span>
                 <h3 className="mt-4 font-bold text-foreground">{card.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted-foreground">{card.description}</p>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
