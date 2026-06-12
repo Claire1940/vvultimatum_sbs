@@ -35,22 +35,18 @@
       "videoLabel": "Official media"
     },
     "updates": {
-      "title": "Latest Game Updates",
-      "browse": "Browse All Game Updates",
-      "items": [
-        { "type": "minor", "title": "Trello Expansion: 5 New Charms, New Weapons & More!", "date": "Jun 10", "href": "/charms" },
-        { "type": "milestone", "title": "2 New Codes: FULLRELEASE & 75KLIKES!", "date": "Jun 9", "href": "/codes" },
-        { "type": "minor", "title": "Code SDFIX Has Expired", "date": "Jun 9", "href": "/codes" }
-      ]
+      "title": "动态更新",
+      "browse": "Browse All Guides",
+      "viewAll": "View All"
     },
     "start": {
       "eyebrow": "Start Here",
       "title": "Your VV Ultimatum Journey",
       "cards": [
-        { "number": "1", "title": "Learn the Basics", "description": "Controls, combat system, quests, and everything you need from your first login.", "href": "/beginner-guide" },
-        { "number": "2", "title": "Pick Your Race", "description": "Compare Shinigami, Quincy, and Hollow to find the best fit for your playstyle.", "href": "/races/best-race" },
-        { "number": "3", "title": "Choose Your Path", "description": "Explore each race's unique progression Shikai, Resurreccion, Schrift, and evolution paths.", "href": "/races" },
-        { "number": "4", "title": "Gear Up & Optimize", "description": "94 equipment items, 72 Spirit Charms, and skill essences maximize your build's potential.", "href": "/equipment" }
+        { "number": "1", "title": "Beginner Guide", "description": "Master the Spirit World from day one with our comprehensive beginner guide covering controls, combat, and early progression.", "href": "/guide/vv-ultimatum-beginner-guide-2026" },
+        { "number": "2", "title": "Fastest Leveling", "description": "Dominate early game and max your progression with the most efficient leveling routes and strategies.", "href": "/guide/vv-ultimatum-fastest-leveling" },
+        { "number": "3", "title": "Best Farming Spots", "description": "Maximize your Soul Essence and EXP gains with optimal farming locations for every stage.", "href": "/guide/vv-ultimatum-best-farming-spots" },
+        { "number": "4", "title": "How to Extract", "description": "Learn the best methods and locations for extracting resources in VV Ultimatum.", "href": "/guide/VV-Ultimatum-how-to-extract" }
       ]
     },
     "popular": {
@@ -89,16 +85,15 @@
     "explore": {
       "title": "Explore the Wiki",
       "description": "Everything you need to master VV: ULTIMATUM, organized and searchable.",
-      "cards": [
-        { "title": "Race Guides", "description": "In-depth guides for Shinigami, Quincy, and Hollow including evolution paths and unlock requirements.", "href": "/races" },
-        { "title": "Boss Strategies", "description": "Every boss fight broken down with attack patterns, counters, and recommended levels.", "href": "/bosses" },
-        { "title": "Build Optimization", "description": "Optimal stat allocation, skill tree picks, and Spirit Charm combos for every playstyle.", "href": "/builds" },
-        { "title": "Area Guides", "description": "Complete zone breakdowns with level ranges, key NPCs, quests, and hidden areas.", "href": "/maps" },
-        { "title": "Clan Database", "description": "Full clan lists with rarity, stat buffs, and recommendations for each race.", "href": "/clans" },
-        { "title": "Active Codes", "description": "Up-to-date list of working codes with redemption instructions and reward details.", "href": "/codes" },
-        { "title": "Combat Mechanics", "description": "Master blocking, parrying, posture breaks, and the red-attack counter system.", "href": "/combat" },
-        { "title": "Progression Paths", "description": "Step-by-step walkthroughs for Shikai, Resurreccion, Schrift, and more.", "href": "/beginner-guide" },
-        { "title": "Trait Rankings", "description": "All 13 Hollow traits ranked with detailed pros, cons, and build synergies.", "href": "/tier-list/best-hollow-traits" }
+      "modules": [
+        { "order": 1, "name": "VV Ultimatum Codes", "description": "Working redeem codes, reward details, expiration notes, and redemption instructions.", "href": "/codes", "displayType": "code-cards" },
+        { "order": 2, "name": "Beginner Guide", "description": "Controls, combat basics, early goals, common mistakes, and first-hour priorities.", "href": "/guide/vv-ultimatum-beginner-guide-2026", "displayType": "step-by-step" },
+        { "order": 3, "name": "Discord & Official Links", "description": "Official Roblox page, Discord server, YouTube, TikTok, and community links.", "href": "/codes", "displayType": "card-list" },
+        { "order": 4, "name": "Clans Tier List", "description": "Best clans for Quincy, Shinigami, and Hollow ranked with reroll priorities.", "href": "/tier-list", "displayType": "tier-grid" },
+        { "order": 5, "name": "Skill Tree Tier List", "description": "Hakuda, Kido, Weapon, and Speed skill priorities for PvE, PvP, and late-game builds.", "href": "/skills/vv-ultimatum-best-skills-ranked", "displayType": "tier-grid" },
+        { "order": 6, "name": "Weapons Tier List", "description": "Weapon strength, difficulty, and recommended pairings by faction and stage.", "href": "/tier-list", "displayType": "tier-grid" },
+        { "order": 7, "name": "Hollow Progression Guide", "description": "Hollow evolution path from base Hollow to Vasto Lorde and Arrancar with key milestones.", "href": "/guide/VV-Ultimatum-bleach", "displayType": "step-by-step" },
+        { "order": 8, "name": "Shinigami Progression Guide", "description": "Soul Reaper missions, Shikai unlock, battle prep, and advanced ability progression.", "href": "/races/vv-ultimatum-shinigami-guide", "displayType": "step-by-step" }
       ]
     },
     "faq": {

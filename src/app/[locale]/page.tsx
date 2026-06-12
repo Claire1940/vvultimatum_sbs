@@ -35,11 +35,20 @@ export default async function LocaleHomePage({ params }: { params: Promise<{ loc
     allArticles.push(...items);
   }
 
+  // 取最近更新的 8 篇文章（按 date 倒序）
+  const recentArticles = [...allArticles]
+    .sort((a, b) => {
+      const dateA = a.metadata.lastModified || a.metadata.date;
+      const dateB = b.metadata.lastModified || b.metadata.date;
+      return dateB.localeCompare(dateA);
+    })
+    .slice(0, 8);
+
   return (
     <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <JsonLd data={webSite} />
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_300px]">
-        <HomePageClient home={messages.home} locale={locale} articles={allArticles} />
+        <HomePageClient home={messages.home} locale={locale} articles={allArticles} recentArticles={recentArticles} />
         <WikiSidebar locale={locale} navGroups={navGroups} />
       </div>
     </main>
