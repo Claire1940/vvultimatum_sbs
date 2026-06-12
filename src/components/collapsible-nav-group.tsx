@@ -8,11 +8,14 @@ interface CollapsibleNavGroupProps {
   icon: React.ReactNode;
   count?: number;
   defaultOpen?: boolean;
+  currentPath?: string;
   children: React.ReactNode;
 }
 
-export function CollapsibleNavGroup({ title, icon, count, defaultOpen = false, children }: CollapsibleNavGroupProps) {
-  const [open, setOpen] = useState(defaultOpen);
+export function CollapsibleNavGroup({ title, icon, count, defaultOpen, currentPath, children }: CollapsibleNavGroupProps) {
+  // Auto-open if currentPath matches a link in this group
+  const shouldOpen = defaultOpen ?? (currentPath ? hasMatchingLink(children, currentPath) : false);
+  const [open, setOpen] = useState(shouldOpen);
 
   return (
     <div>
@@ -28,4 +31,17 @@ export function CollapsibleNavGroup({ title, icon, count, defaultOpen = false, c
       {open && children}
     </div>
   );
+}
+
+/** Check if any <Link href="..."> inside children matches currentPath */
+function hasMatchingLink(children: React.ReactNode, currentPath: string): boolean {
+  if (!children) return false;
+  if (Array.isArray(children)) return children.some((c) => hasMatchingLink(c, currentPath));
+  if (typeof children === "object" && children !== null && "props" in children) {
+    const props = (children as React.ReactElement).props;
+    const href = props.href as string | undefined;
+    if (href && (href === currentPath || currentPath.startsWith(href + "/"))) return true;
+    if (props.children) return hasMatchingLink(props.children, currentPath);
+  }
+  return false;
 }
