@@ -235,7 +235,7 @@ export interface NavGroup {
   links: Array<{ label: string; href: string; badge?: string }>;
 }
 
-// 分组标题映射：slug → 人类可读标题
+// 分组标题映射：slug → 人类可读标题（默认英文）
 const GROUP_TITLES: Record<string, string> = {
   bosses: "Bosses",
   races: "Races",
@@ -244,6 +244,27 @@ const GROUP_TITLES: Record<string, string> = {
   codes: "Codes",
   guide: "Getting Started",
   "tier-list": "Tier Lists",
+};
+
+// 日文分组标题映射
+const GROUP_TITLES_JA: Record<string, string> = {
+  bosses: "ボス",
+  races: "種族",
+  maps: "マップ & エリア",
+  skills: "スキル",
+  codes: "コード",
+  guide: "初心者ガイド",
+  "tier-list": "Tier List",
+};
+
+// locale → 分组标题映射
+const GROUP_TITLES_BY_LOCALE: Record<string, Record<string, string>> = {
+  ja: GROUP_TITLES_JA,
+};
+
+// locale → "Overview" 翻译
+const OVERVIEW_LABEL_BY_LOCALE: Record<string, string> = {
+  ja: "一覧",
 };
 
 // 分组排序顺序
@@ -274,8 +295,9 @@ export function getDynamicNavigation(language: Locale = "en"): NavGroup[] {
     if (slugPaths.length === 0) continue;
 
     const links: NavGroup["links"] = [];
-    // 添加 Overview 入口
-    links.push({ label: "Overview", href: `/${groupSlug}` });
+    // 添加 Overview 入口（按 locale 翻译）
+    const overviewLabel = OVERVIEW_LABEL_BY_LOCALE[language] || "Overview";
+    links.push({ label: overviewLabel, href: `/${groupSlug}` });
 
     for (const segments of slugPaths) {
       const articleSlug = segments.join("/");
@@ -301,8 +323,12 @@ export function getDynamicNavigation(language: Locale = "en"): NavGroup[] {
       links.push({ label: title, href: `/${groupSlug}/${articleSlug}`, badge });
     }
 
+    // 优先使用 locale 特定标题，否则回退到英文默认
+    const localTitles = GROUP_TITLES_BY_LOCALE[language] || {};
+    const groupTitle = localTitles[groupSlug] || GROUP_TITLES[groupSlug] || groupSlug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+
     groups.push({
-      title: GROUP_TITLES[groupSlug] || groupSlug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()),
+      title: groupTitle,
       count: links.length - 1, // 减去 Overview
       slug: groupSlug,
       links,
