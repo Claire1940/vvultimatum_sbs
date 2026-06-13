@@ -3,7 +3,7 @@ import { getAllContentPaths } from "@/lib/content";
 import { routing } from "@/i18n/routing";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://vvultimatum.sbs";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vvultimatum.sbs";
 
   // Static paths that always exist
   const staticPaths = ["/", "/bosses", "/privacy-policy", "/terms-of-service", "/copyright", "/about"];
